@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}气象局数据{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">气象局数据</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">主页</a></li>
+				<li><a href="/tiqian">提前</a></li>
+				<li><a href="/jieshou">接收</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}.
+
+{% block content %}
+<div class="container">
+	{% block page_content %}{% endblock %}
+</div>
+{% endblock %}

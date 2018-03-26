@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="zh-CN" />
+    <title>江西省气象数据查询地图</title>
+    <script src="/static/upload/jquery-3.2.1.min.js"></script>
+    <script src="/static/upload/echarts.min.js"></script>
+    <script src="/static/upload/WdatePicker.js"></script>
+</head>
+<body>
+	<table width="100%">
+		<tbody>
+			<tr>
+				<td valign="center" align="center">
+					<div class="header" style="width:auto;">
+						<span id="title" style="font-size:20pt;font-weight:bold;">接收率地图</span>
+					</div>
+					<form id="myForm" method="POST">
+						<input type="text" name = "datetime" id="datetime" placeholder="yyyy-mm-dd"
+						onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:00:00',lang:'zh-cn'})"/>
+						<select id="datatype" name="datatype">
+							<option value='0'>国家自动站</option>
+							<option value='1'SELECTED>区域自动站</option>
+							<option value='2'>公路交通气象站</option>
+							<option value='3'>国家级无人站</option>
+							<option value='4'>自动雨量站</option>
+							<option value='5'>地面日照资料</option>
+							<option value='6'>雷达基数据</option>
+							<option value='7'>基本发射率（230公里，0.5度）</option>
+							<option value='8'>基本发射率（230公里，1.5度）</option>
+							<option value='9'>基本发射率（230公里，2.4度）</option>
+							<option value='10'>基本发射率（230公里，3.4度）</option>
+							<option value='11'>基本发射率（230公里，4.3度）</option>
+							<option value='12'>基本发射率（230公里，6.0度）</option>
+							<option value='13'>基本发射率（460公里，0.5度）</option>
+							<option value='14'>基本发射率（460公里，1.5度）</option>
+							<option value='15'>基本发射率（460公里，2.4度）</option>
+						</select>
+						<input type="button" value = "查询接收情况" onclick="tijiao(0)"/>
+						<input type="button" name='shici' value="上一时次" onclick="tijiao(1)" style="height=10px;width=50px;">
+						<input type="button" name='shici' value="下一时次" onclick="tijiao(2)" style="height=10px;width=50px;">
+						<input type="button" name='shici' value="最新时次" onclick="tijiao(3)" style="height=10px;width=50px;">
+					</form>
+					<br>
+					<br>
+					<br>
+				</td>
+				<td>
+				<div> </div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<style>
+	.parentDiv{
+		position:relative;
+	}
+	.div1{
+		position:absolute;
+		top:0px;
+		left:0px;
+		z-index:2;
+	}
+	.div2{
+		position:absolute;
+		top:0px;
+		left:60%;
+		z-index:2;
+	}
+	.div3{
+		position:absolute;
+		top:0px;
+		left:0px;
+		z-index:1;
+	}
+	.div4{
+		position:absolute;
+		top:200px;
+		left:60%;
+		z-index:2;
+	}
+	.div5{
+		position:absolute;
+		top:400px;
+		left:60%;
+		z-index:2;
+	}
+	.div8{
+		position:absolute;
+		top:0px;
+		left:400px;
+		z-index:1;
+		display:none;
+	}
+	.div9{
+		position:absolute;
+		top:0px;
+		left:80%;
+		z-index:2;
+		display:none;
+	}
+	</style>
+	
+	<div class='parentDiv'>
+		<div class='div1' id="main" title='江西省地图' style="width: 700px;height:600px;float:left;"></div>
+		<div class='div2' id="main2" title='接受表' style="width: 500px;height:230px;float:right"></div>
+		<div class='div4' id="main4" title='入库表' style="width: 500px;height:230px;float:right"></div>
+		<div class='div5' id="main5" title='发送表' style="width: 500px;height:230px;float:right"></div>
+		<div class='div3' id="main3" title='市级区县地图' style="width:700px;height:600px;float:left"></div>
+		<div class='div8' id="main8" title='返回' style="width:50px;height:10px;">
+			<input type="button" id="back" disabled="true" name='back' value="返回到省级界面" onclick="f1()" style="height=10px;width=50px;">
+		</div>
+		<div class='div9' id="main9" title='省/市' style="width:100px;height:10px;">
+			<span id="city"style="font-size:16pt;font-weight:bold;">江西省</span>
+		</div>
+	</div>
+	<script type="text/javascript" src='/static/upload/jieshou_7.js'></script>
+</body>
+</html>
+

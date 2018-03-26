@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="zh-CN" />
+    <script src="/static/upload/jquery-3.2.1.min.js"></script>
+    <script src="/static/upload/echarts.min.js"></script>
+    <script src="/static/upload/WdatePicker.js"></script>
+</head>
+<body>
+{%raw%}
+	<table width="100%">
+		<tbody>
+			<tr>
+				<td valign="center" align="center">
+					<div class="header" style="width:auto;">
+						<span id="title" style="font-size:16pt;font-weight:bold;">站点信息</span>
+					</div>
+					<div class="secondLine" id="secondLine">
+						<div class="timeDiv" id="time" >
+							<select id="xinxi" name="xinxi">
+								<option value='9'SELECTED>提前站点</option>
+								<option value='1'>逾限站点</option>
+								<option value='3'>超时站点</option>
+								<option value='0'>未到站点</option>
+							</select>
+							<select id="shijian" onchange="swapTime()">
+									<option value='0'SELECTED>时间查询</option>
+									<option value='1'>时段查询</option>
+							</select>
+							<input type="text" name = "datetime" id="datetime" placeholder="yyyy-mm-dd"
+							onfocus="WdatePicker({maxDate:'%y-%M-%d {%H-8}:%m:%s', dateFmt:'yyyy-MM-dd HH:00:00',lang:'zh-cn'})">
+						</div>
+						<div class="anniuDiv" id="anniu">
+							<input type="button" value = "查询" onclick="tijiao(4);"/>
+							<input type="button" name='shici' id='shangyi' value="上一时次" onclick="tijiao(5)" style="height=10px;width=50px;">
+							<input type="button" name='shici' id='xiayi' value="下一时次" onclick="tijiao(6)"  style="height=10px;width=50px;">
+							<input type="button" name='shici' id='zuixin' value="最新时次" onclick="tijiao(7)" style="height=10px;width=50px;">
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+{%endraw%}
+	<style>
+	#secondLine{width:1200px;}
+	#time{position:relative;float:left;left:20%;}
+	#anniu{position:relative;float:left;left:20%;}
+	.parentDiv{
+		position:relative;
+	}
+	.div1{
+		position:absolute;
+		top:50px;
+		left:0px;
+		z-index:2;
+	}
+	.div2{
+		position:absolute;
+		top:50px;
+		left:60%;
+		z-index:2;
+	}
+	.div3{
+		position:absolute;
+		top:50px;
+		left:0px;
+		z-index:1;
+	}
+	.div6{
+		position:absolute;
+		top:50px;
+		left:700px;
+		z-index:1;
+		display:none;
+	}
+	.div8{
+		position:absolute;
+		top:50px;
+		left:400px;
+		z-index:1;
+		display:none;
+	}
+	</style>
+	
+	<div class='parentDiv'>
+		<div class='div1' id="main" title='江西省地图' style="width: 700px;height:600px;float:left;"></div>
+		<div class='div2' id="main2" title='接受表' style="width: 500px;height:300px;float:right"></div>
+		<div class='div6' id="main6" title='表格' style="width:500px;height:10px;float:right">
+			<table width="500" border="1" cellspacing="0">
+				<thread>
+					<tr>
+						<th align="center" width="100px">站点编号</th>
+						<th align="center" width="150px">站点名</th>
+						<th align="center" width="150px">机器型号</th>
+						<th align="center" width="150px">时间</th>
+					</tr>
+				</thread>
+				<tbody id="main7">
+				</tbody>
+			</table> 
+			</div>
+		<div class='div3' id="main3" title='市级区县地图' style="width:700px;height:600px;float:left"></div>
+		<div class='div8' id="main8" title='返回' style="width:50px;height:10px;">
+			<input type="button" id="back" disabled="true" name='back' value="返回到省级界面" onclick="f1()" style="height=10px;width=50px;">
+		</div>
+	</div>
+	<script type="text/javascript" src='/static/upload/tiqian_7.js'></script>
+</body>
+</html>
+
